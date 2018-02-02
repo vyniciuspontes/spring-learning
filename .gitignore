@@ -26,9 +26,9 @@ bin/
 gen/
 
 # Ignore gradle files
-*.gradle/
-*build/
-!*gradle/wrapper/gradle-wrapper.jar
+*/.gradle/
+*/build/
+!*/gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
 .apt_generated
