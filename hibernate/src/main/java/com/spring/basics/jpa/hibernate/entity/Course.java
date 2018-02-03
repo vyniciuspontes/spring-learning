@@ -1,11 +1,18 @@
 package com.spring.basics.jpa.hibernate.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Course {
+public class Course implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
@@ -13,7 +20,7 @@ public class Course {
 
 	private String name;
 
-	protected Course() {
+	public Course() {
 	}
 
 	public Course(String name) {

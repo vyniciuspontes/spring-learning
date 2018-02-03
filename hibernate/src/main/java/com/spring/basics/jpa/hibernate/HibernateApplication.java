@@ -23,8 +23,9 @@ public class HibernateApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		
-		logger.info("Finding with JPA {}",courseRepository.findById(10001));
+		//Course course = courseRepository.findById(10001);
+		//logger.info("Finding with JPA {}",course);
+		//courseRepository.delete(course);
 		
 	}
 }

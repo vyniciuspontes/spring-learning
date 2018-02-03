@@ -60,4 +60,7 @@ nbdist/
 # Windows clutter
 Thumbs.db
 
-
+#Eclipse
+/.metadata/
+RemoteSystemsTempFiles/
+.recommenders/
