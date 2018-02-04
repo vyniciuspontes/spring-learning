@@ -1,5 +1,8 @@
 package com.spring.basics.jpa.hibernate.repository;
 
+import org.springframework.data.repository.NoRepositoryBean;
+
+@NoRepositoryBean
 public interface AbstractDAO<T> {
 	
 	public void create(T entity);

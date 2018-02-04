@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,13 +18,19 @@ import com.spring.basics.jpa.hibernate.entity.Course;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Transactional
+@Transactional(rollbackFor=Exception.class)
 public class CourseRepositoryTests {
 	
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
 	private CourseRepository repository;
+	
+	@Test
+	//@Rollback(false)
+	public void playWithEntityManager() {
+		repository.playWithEntityManager();
+	}
 	
 	@Test
 	public void find() {
@@ -45,7 +51,6 @@ public class CourseRepositoryTests {
 	}
 	
 	@Test
-	@DirtiesContext
 	public void remove() {
 		Course course = repository.find(10001L);
 		repository.remove(course);
@@ -53,7 +58,6 @@ public class CourseRepositoryTests {
 	}
 	
 	@Test
-	@DirtiesContext
 	public void update() {
 		Course course = repository.find(10001L);
 		course.setName("Other Name");

@@ -6,16 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.spring.basics.jpa.hibernate.entity.Course;
 import com.spring.basics.jpa.hibernate.repository.CourseRepository;
 
 @SpringBootApplication
+@Transactional
 public class HibernateApplication implements CommandLineRunner{
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	private CourseRepository courseRepository;
+	private CourseRepository repository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(HibernateApplication.class, args);
@@ -23,9 +26,6 @@ public class HibernateApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		//Course course = courseRepository.findById(10001);
-		//logger.info("Finding with JPA {}",course);
-		//courseRepository.delete(course);
 		
 	}
 }
