@@ -8,8 +8,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.spring.basics.jpa.hibernate.entity.Course;
 import com.spring.basics.jpa.hibernate.repository.CourseRepository;
+import com.spring.basics.jpa.hibernate.repository.StudentRepository;
 
 @SpringBootApplication
 @Transactional
@@ -18,14 +18,22 @@ public class HibernateApplication implements CommandLineRunner{
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
-	private CourseRepository repository;
+	private CourseRepository courseRepository;
+	
+	@Autowired
+	private StudentRepository studentRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(HibernateApplication.class, args);
 	}
 
 	@Override
+	@Transactional
 	public void run(String... args) throws Exception {
+		studentRepository.playWithTransientState();
+		//courseRepository.playWithEntityManager();
 		
 	}
+	
+	
 }

@@ -8,9 +8,6 @@ package com.spring.basics.jpa.hibernate.repository;
 import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.spring.basics.jpa.hibernate.entity.Course;
 
 /**
  * 
@@ -21,7 +18,7 @@ public abstract class AbstractDAOImpl<T> implements AbstractDAO<T>{
 	@Autowired
 	protected EntityManager entityManager;
 	
-	public Class<T> entityClass;
+	public final Class<T> entityClass;
 
     public AbstractDAOImpl(Class<T> entityClass) {
         this.entityClass = entityClass;
@@ -44,6 +41,6 @@ public abstract class AbstractDAOImpl<T> implements AbstractDAO<T>{
 
     @Override
     public T find(Long id) {
-        return entityManager.find(entityClass, id);
+    		return entityManager.find(entityClass, id);
     }
 }
