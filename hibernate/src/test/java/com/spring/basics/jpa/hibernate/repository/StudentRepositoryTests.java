@@ -20,6 +20,7 @@ import com.spring.basics.jpa.hibernate.entity.Student;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Transactional
 public class StudentRepositoryTests {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -31,12 +32,15 @@ public class StudentRepositoryTests {
 	private EntityManager em;
 
 	@Test
-	public void playWithEntityManager() {
-		// repository.playWithEntityManager();
+	public void findStudentCourses() {
+		Student student = em.find(Student.class,20001L);
+		
+		logger.info("Student details -> {}", student);
+		logger.info("Courses details -> {}", student.getCourses());
+		//assertEquals(40001L, passport.getId().longValue());
 	}
 	
 	@Test
-	@Transactional
 	public void findStudentPassport() {
 		Student student = em.find(Student.class,20001L);
 		

@@ -21,3 +21,12 @@ values(20003,'Jane',40003);
 
 insert into review(id, rating, description, course_id)
 values(30001, '5', 'Very good', 10002);
+
+insert into student_course(student_id,course_id)
+values(20001,10001);
+insert into student_course(student_id,course_id)
+values(20002,10001);
+insert into student_course(student_id,course_id)
+values(20003,10001);
+insert into student_course(student_id,course_id)
+values(20001,10003);
